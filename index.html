@@ -74,7 +74,11 @@
       opacity: 1;
     }
     body.happyhour {
-      background-color: #fff0f5;
+      background-color: #fbd6e1;
+      background-image: url('franzia-bag.png');
+      background-repeat: repeat;
+      background-size: 100px auto;
+      background-position: center;
     }
     body.happyhour .subtitle {
       color: #a52a2a;
@@ -82,9 +86,18 @@
     body.happyhour .footer {
       color: #a52a2a;
     }
+    .happyhour-btn.active {
+      background-color: #a52a2a;
+    }
+    .content-wrapper {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
+<div class="content-wrapper">
   <header>
     <h1>Matteo "Copy-Paste" Bjornsson</h1>
     <div class="subtitle">Future Intern. Legacy Adjacent. Full-stack Coffee Fetcher.</div>
@@ -101,14 +114,14 @@
     <h2>Experience</h2>
     <div class="resume">
       <p><strong>Office Plant Watering Intern</strong> – Daddy's VC Firm<br />
-      June 2023 – August 2023<br />
-      - Implemented bi-weekly hydration cycles for the office fern.<br />
-      - Achieved 117% KPI growth in leaf shininess.</p>
+        June 2023 – August 2023<br />
+        - Implemented bi-weekly hydration cycles for the office fern.<br />
+        - Achieved 117% KPI growth in leaf shininess.</p>
 
       <p><strong>Executive Snack Procurement Analyst</strong> – Startup with no product<br />
-      Jan 2022 – May 2023<br />
-      - Curated diverse selection of LaCroix flavors.<br />
-      - Oversaw quarterly bagel budget expansion negotiations.</p>
+        Jan 2022 – May 2023<br />
+        - Curated diverse selection of LaCroix flavors.<br />
+        - Oversaw quarterly bagel budget expansion negotiations.</p>
     </div>
   </section>
 
@@ -137,33 +150,40 @@
 
   <section>
     <h2>Halftime Happy Hour Mode</h2>
-    <button class="happyhour-btn" onclick="toggleHappyHour()">Activate Happy-Hour Mode 🍷</button>
+    <button id="happyhourBtn" class="happyhour-btn" onclick="toggleHappyHour()">Activate Franzia Mode 🍷</button>
   </section>
 
   <div class="footer">
     This application is unpaid, overqualified, and fully optimized for LinkedIn clout.
   </div>
+</div>
 
-  <script>
-    function cheers() {
-      const cheersEl = document.getElementById('cheers');
-      cheersEl.classList.add('visible');
-      setTimeout(() => {
-        cheersEl.classList.remove('visible');
-      }, 2500);
-    }
+<script>
+  function cheers() {
+    const cheersEl = document.getElementById('cheers');
+    cheersEl.classList.add('visible');
+    setTimeout(() => {
+      cheersEl.classList.remove('visible');
+    }, 2500);
+  }
 
-    function toggleHappyHour() {
-      document.body.classList.toggle('happyhour');
-      const img = document.getElementById('headshot');
-      if (document.body.classList.contains('happyhour')) {
-        img.src = 'franzia-photo.jpg';
-        img.alt = 'After hours Franzia energy';
-      } else {
-        img.src = 'your-photo.jpg';
-        img.alt = 'Professional mugshot';
-      }
+  function toggleHappyHour() {
+    const body = document.body;
+    const img = document.getElementById('headshot');
+    const btn = document.getElementById('happyhourBtn');
+
+    body.classList.toggle('happyhour');
+    btn.classList.toggle('active');
+    btn.textContent = body.classList.contains('happyhour') ? 'Franzia Mode ON 🍷' : 'Activate Franzia Mode 🍷';
+
+    if (body.classList.contains('happyhour')) {
+      img.src = 'franzia-photo.jpg';
+      img.alt = 'After hours Franzia energy';
+    } else {
+      img.src = 'your-photo.jpg';
+      img.alt = 'Professional mugshot';
     }
-  </script>
+  }
+</script>
 </body>
 </html>
